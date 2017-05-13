@@ -5,27 +5,25 @@ import java.util.Scanner;
 
 public class MyPlayer implements aiproj.slider.SliderPlayer {
 	private BoardObj myBoard; 
-	private char playerType;
+	private abstract_Player p; 
+	private char my_player; 
+	//private char playerType;
 
 	public MyPlayer(){
-		
 	}
 	
 	public static String extractBadChar(String s){
 		String newS = "";
-		
 		for(int j=0; j<s.length(); j++){
 			if((int)s.charAt(j) == 32){ //if the character is a white space
 				continue;
 			}else{
 				newS = newS + s.charAt(j);
 			}
-		}
-		
+		}	
 		return newS;
 	}
 
-	
 	public void init(int dimension, String board, char player){
 		int counter = 0;
 		GeneralPiece[][] myWorld = new GeneralPiece[dimension][dimension];
@@ -37,7 +35,7 @@ public class MyPlayer implements aiproj.slider.SliderPlayer {
 				// Horizontal Player
 				if(temp.charAt(y) == 'H'){
 					Position p = new Position(x,y);
-					HorizontalPlayer h = new HorizontalPlayer(p,'H');
+					HorizontalPiece h = new HorizontalPiece(p,'H');
 					myWorld[x][y] = h;
 				// Blank Space	
 				}else if(temp.charAt(y) == '+'){
@@ -52,7 +50,7 @@ public class MyPlayer implements aiproj.slider.SliderPlayer {
 				// Vertical Player 
 				}else if(temp.charAt(y) == 'V'){
 					Position p = new Position(x,y);
-					VerticalPlayer v = new VerticalPlayer(p,'V');
+					VerticalPiece v = new VerticalPiece(p,'V');
 					myWorld[x][y] = v;
 				}else if(temp.charAt(y) == '\n'){
 					break;
@@ -72,19 +70,19 @@ public class MyPlayer implements aiproj.slider.SliderPlayer {
 	        System.out.println();
 	    }
         System.out.println(); */
-        this.myBoard = new BoardObj(dimension,myWorld); //create our board object 
-        this.playerType = player; //initiate type  
+		this.my_player = player; 
+        this.myBoard = new BoardObj(dimension, myWorld); //create our board object 
+        //this.playerType = player; //initiate type  {
+		this.p = new abstract_Player(dimension, myBoard, player); //pass the horizontal player reference to the board 
 
 	}
-			
 	
-	
-	public void update(Move move){}
+	public void update(Move move){
+		this.p.update(move, myBoard, my_player);
+	}
 	
 	public Move move(){
-		Move.Direction d = Move.Direction.DOWN; //just making it compile
-		Move m = new Move(1,1,d);
-		return m;
+		return (this.p.move()); 
 	}
 	
 }
