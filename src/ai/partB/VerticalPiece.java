@@ -19,9 +19,9 @@ public class VerticalPiece extends GeneralPiece{
 //returns an array of the 3 hypothetically possible moves for any vertical piece
 //these potential moves are later validated by the Board class 	
 	public Move[] hypotheticalMovesV(){
-        Move mUp = new Move(this.getPosition().getX(), this.getPosition().getY(), Move.Direction.UP);
-        Move mLeft = new Move(this.getPosition().getX(), this.getPosition().getY(), Move.Direction.LEFT);
-        Move mRight = new Move(this.getPosition().getX(), this.getPosition().getY(), Move.Direction.RIGHT);
+        Move mUp = new Move(super.pos.getX(), super.pos.getY(), Move.Direction.UP);
+        Move mLeft = new Move(super.pos.getX(), super.pos.getY(), Move.Direction.LEFT);
+        Move mRight = new Move(super.pos.getX(), super.pos.getY(), Move.Direction.RIGHT);
 
 		Move[] mArray = {mUp, mLeft, mRight};
 		return mArray; 

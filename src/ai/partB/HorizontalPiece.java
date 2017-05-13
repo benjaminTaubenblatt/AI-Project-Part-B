@@ -23,9 +23,9 @@ public class HorizontalPiece extends GeneralPiece{
 	//these potential moves are later validated by the Board class 
 	public Move[] hypotheticalMovesH(){
 
-        Move mUp = new Move(this.getPosition().getX(), this.getPosition().getY(), Move.Direction.UP);
-        Move mDown = new Move(this.getPosition().getX(), this.getPosition().getY(), Move.Direction.DOWN);
-        Move mRight = new Move(this.getPosition().getX(), this.getPosition().getY(), Move.Direction.RIGHT);
+        Move mUp = new Move(super.pos.getX(), super.pos.getY(), Move.Direction.UP);
+        Move mDown = new Move(super.pos.getX(), super.pos.getY(), Move.Direction.DOWN);
+        Move mRight = new Move(super.pos.getX(), super.pos.getY(), Move.Direction.RIGHT);
 		
         Move[] mArray = {mUp, mDown, mRight}; 
 		return mArray; 
