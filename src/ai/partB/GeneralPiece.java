@@ -10,8 +10,8 @@ package ai.partB;
  //piece is the parent class of all game pieces, contains a position object for its location 
  //board is made up of pieces 
 public abstract class GeneralPiece {
-	private Position pos;
-	public char i; 
+	protected Position pos;
+	protected char i; 
 	
 	public GeneralPiece(Position pos, char i){
 		this.pos = pos;

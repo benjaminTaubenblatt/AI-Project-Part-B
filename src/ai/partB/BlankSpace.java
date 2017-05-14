@@ -9,7 +9,6 @@ public class BlankSpace extends GeneralPiece {
  */	
 	public BlankSpace(Position pos, char i){
 		super(pos,i);
-		
 	}
 	
 }
